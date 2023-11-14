@@ -1,5 +1,3 @@
-# Documentación de la API
-
 # Instrucciones de Configuración y Ejecución
 
 Este proyecto fue desarrollado en Python 3.9. A continuación, se detallan las recomendaciones para configurar y ejecutar el proyecto de manera óptima:
@@ -8,15 +6,45 @@ Este proyecto fue desarrollado en Python 3.9. A continuación, se detallan las r
 
 Se recomienda encarecidamente utilizar un entorno virtual para evitar conflictos entre las dependencias de este proyecto y otras aplicaciones Python en su sistema. Puede crear un entorno virtual ejecutando el siguiente comando en la línea de comandos:
 
-python3 -m venv nombre_del_entorno
+```python
+python -m venv nombre_del_entorno
+```
 
 ## Activación del Entorno Virtual
 
 **En Windows:**
 
 ```bash
-nombre_del_entorno\Scripts\activate`
+nombre_del_entorno\Scripts\activate
 ```
+
+**En macOS y Linux:**
+```bash
+source nombre_del_entorno/bin/activate
+```
+
+## Instalación de Dependencias
+Una vez que el entorno virtual esté activado, instale las dependencias del proyecto utilizando el archivo requirements.txt. Ejecute el siguiente comando en la línea de comandos:
+
+```python
+pip install -r requirements.txt
+```
+Este comando instalará todas las bibliotecas y paquetes necesarios para ejecutar la aplicación.
+
+## Nota Importante
+
+Asegúrese de estar utilizando Python 3.9 o una versión superior para garantizar la compatibilidad con las dependencias.
+
+## Ejecución del Proyecto
+
+Después de configurar el entorno virtual y haber instalado las dependencias, puede ejecutar la aplicación. Utilice el siguiente comando en la línea de comandos:
+
+```python
+python AlmacenamientoDatos.py
+```
+La aplicación Flask se ejecutará localmente y estará disponible en http://localhost:5000/. Puede acceder a los diferentes endpoints según la documentación proporcionada en la sección correspondiente del README.
+
+# Endpoints de la API
 
 ## Usuarios
 
