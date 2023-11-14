@@ -206,6 +206,7 @@ def registrar_datos():
     
 # Ruta para obtener resultados del modelo
 @app.route('/api/resultado_arbolesdecicion', methods=['GET'])
+@jwt_required()
 def obtener_resultados_arbolesdecicion():
     try:
         # Llamar a la función desde tu script que contiene la lógica del modelo
@@ -230,6 +231,7 @@ def obtener_resultados_arbolesdecicion():
     
 # Ruta para obtener resultados del modelo RedesNeuronales
 @app.route('/api/resultados_redesneuronales', methods=['GET'])
+@jwt_required()
 def obtener_resultados_redesneuronales():
     try:
         # Llamar a la función desde RedesNeuronales.py
