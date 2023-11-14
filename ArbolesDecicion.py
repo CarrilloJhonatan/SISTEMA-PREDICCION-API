@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, accuracy_score
 
-def entrenar_y_evaluar_modelo(dataset_path="Financial_Application_Behavior_Dataset.csv"):
+def entrenar_y_evaluar_modelo_arbolesdecicion(dataset_path="Financial_Application_Behavior_Dataset.csv"):
     # Cargar los datos
     data = pd.read_csv(dataset_path)
 

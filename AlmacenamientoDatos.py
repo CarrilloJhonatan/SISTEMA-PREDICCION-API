@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, session
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_cors import CORS 
 from supabase import create_client
-from ArbolesDecicion import entrenar_y_evaluar_modelo
+from ArbolesDecicion import entrenar_y_evaluar_modelo_arbolesdecicion
 from RedesNeuronales import entrenar_y_evaluar_modelo_neuronal
 # Crear una instancia de la aplicación Flask
 app = Flask(__name__)
@@ -209,7 +209,7 @@ def registrar_datos():
 def obtener_resultados_arbolesdecicion():
     try:
         # Llamar a la función desde tu script que contiene la lógica del modelo
-        reporte_clasificacion, precision_modelo = entrenar_y_evaluar_modelo_neuronal()
+        reporte_clasificacion, precision_modelo = entrenar_y_evaluar_modelo_arbolesdecicion()
 
         # Formatear los resultados como desees
         resultados = {
