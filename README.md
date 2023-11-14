@@ -1,5 +1,22 @@
 # Documentación de la API
 
+# Instrucciones de Configuración y Ejecución
+
+Este proyecto fue desarrollado en Python 3.9. A continuación, se detallan las recomendaciones para configurar y ejecutar el proyecto de manera óptima:
+
+## Entorno Virtual
+
+Se recomienda encarecidamente utilizar un entorno virtual para evitar conflictos entre las dependencias de este proyecto y otras aplicaciones Python en su sistema. Puede crear un entorno virtual ejecutando el siguiente comando en la línea de comandos:
+
+python3 -m venv nombre_del_entorno
+
+## Activación del Entorno Virtual
+
+**En Windows:**
+
+```bash
+nombre_del_entorno\Scripts\activate
+
 ## Usuarios
 
 ### Obtener lista de usuarios
