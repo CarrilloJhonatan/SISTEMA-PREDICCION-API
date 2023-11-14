@@ -132,7 +132,7 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
   "email": "user@example.com",
   "password": "user_password"
 }
-
+```
 ### Cerrar sesión
 
 - **Endpoint:** `/api/logout`
