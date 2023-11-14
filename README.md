@@ -46,6 +46,21 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 
 # Endpoints de la API
 
+## Nota Importante
+
+Para acceder a las rutas que requieren autenticación, sigue estos pasos:
+
+1. Inicia sesión con un usuario registrado para obtener un token de autenticación.
+
+2. Utiliza el token generado durante el inicio de sesión para acceder a las rutas que requieren autenticación.
+
+3. Incluye el token en el encabezado de la solicitud de la siguiente manera:
+
+    - **Key (Clave):** `Authorization`
+    - **Value (Valor):** `Bearer tokengeneradoaliniciarseccion`
+
+Este proceso garantiza que solo los usuarios autenticados y autorizados tengan acceso a las funciones protegidas de la aplicación, proporcionando un nivel adicional de seguridad y control en el manejo de datos y recursos.
+
 ## Usuarios
 
 ### Obtener lista de usuarios
@@ -53,6 +68,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Endpoint:** `/api/users`
 - **Método:** `GET`
 - **Descripción:** Retorna la lista de todos los usuarios.
+- **Autenticación:**  No se requiere.
 
 ### Obtener usuario por ID
 
@@ -61,6 +77,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Parámetros:**
   - `user_id`: ID único del usuario
 - **Descripción:** Retorna la información de un usuario específico según su ID.
+- **Autenticación:**  No se requiere.
 
 ### Registrar nuevo usuario
 
@@ -71,6 +88,15 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
   - `email`: Correo electrónico
   - `password`: Contraseña
 - **Descripción:** Registra un nuevo usuario en el sistema.
+- **Autenticación:**  No se requiere.
+- **Ejemplo:**
+```json
+{
+  "username": "user",
+  "email": "user@example.com",
+  "password": "user_password"
+}
+```
 
 ### Registrar nuevo usuario Admin
 
@@ -81,6 +107,15 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
   - `email`: Correo electrónico
   - `password`: Contraseña
 - **Descripción:** Registra un nuevo usuario con privilegios de administrador en el sistema.
+- **Autenticación:**  No se requiere.
+- **Ejemplo:**
+```json
+{
+  "username": "admin_user",
+  "email": "admin@example.com",
+  "password": "admin_password"
+}
+```
 
 ### Iniciar sesión
 
@@ -90,12 +125,20 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
   - `email`: Correo electrónico
   - `password`: Contraseña
 - **Descripción:** Inicia sesión y retorna un token JWT para autenticación posterior.
-
+- **Autenticación:**  No se requiere.
+- **Ejemplo:**
+```json
+{
+  "email": "user@example.com",
+  "password": "user_password"
+}
+```
 ### Cerrar sesión
 
 - **Endpoint:** `/api/logout`
 - **Método:** `GET`
 - **Descripción:** Cierra la sesión actual del usuario autenticado.
+- **Autenticación:**  Se requiere un token JWT.
 
 ## Datos
 
@@ -104,14 +147,44 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Endpoint:** `/api/datos`
 - **Método:** `GET`
 - **Descripción:** Retorna la lista de datos de predicción.
+- **Autenticación:**  Se requiere un token JWT.
 
 ### Registrar nuevos datos
 
 - **Endpoint:** `/api/datos`
 - **Método:** `POST`
 - **Parámetros (en formato JSON):**
-  - Varios campos con datos específicos (ver descripción)
+  - `user_id`: ID único del usuario.
+  - `first_open`: Primera apertura de la aplicación.
+  - `dayofweek`: Día de la semana.
+  - `hour`: Hora de registro.
+  - `age`: Edad del usuario.
+  - `screen_list`: Lista de pantallas visualizadas.
+  - `numscreens`: Número de pantallas visualizadas.
+  - `minigame`: Indicador de participación en minijuegos.
+  - `used_premium_feature`: Indicador de uso de funciones premium.
+  - `enrolled`: Indicador de inscripción.
+  - `enrolled_date`: Fecha de inscripción.
+  - `liked`: Indicador de "me gusta".
 - **Descripción:** Registra nuevos datos en el sistema y actualiza el archivo CSV.
+- **Autenticación:** Se requiere un token JWT.
+- **Ejemplo:**
+```json
+ {
+  "user_id": 123,
+  "first_open": "2013-04-26 18:22:16.013",
+  "dayofweek": "Monday",
+  "hour": 14,
+  "age": 25,
+  "screen_list": "Home, Profile, Settings",
+  "numscreens": 3,
+  "minigame": 1,
+  "used_premium_feature": 0,
+  "enrolled": 1,
+  "enrolled_date": "2013-04-26 18:31:58.923",
+  "liked": true
+}
+```
 
 ## Modelos
 
@@ -120,9 +193,11 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Endpoint:** `/api/resultado_arbolesdecicion`
 - **Método:** `GET`
 - **Descripción:** Retorna los resultados del modelo de Árboles de Decisión, incluyendo el reporte de clasificación y la precisión del modelo. También indica si el usuario se inscribirá o no.
+- **Autenticación:**  Se requiere un token JWT.
 
 ### Obtener resultados del modelo de Redes Neuronales
 
 - **Endpoint:** `/api/resultados_redesneuronales`
 - **Método:** `GET`
 - **Descripción:** Retorna los resultados del modelo de Redes Neuronales, incluyendo el reporte de clasificación y la precisión del modelo. También indica si el usuario se inscribirá o no.
+- **Autenticación:**  Se requiere un token JWT.
