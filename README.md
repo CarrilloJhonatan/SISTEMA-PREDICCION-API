@@ -14,8 +14,9 @@ python3 -m venv nombre_del_entorno
 
 **En Windows:**
 
-`bash
+```bash
 nombre_del_entorno\Scripts\activate`
+```
 
 ## Usuarios
 
