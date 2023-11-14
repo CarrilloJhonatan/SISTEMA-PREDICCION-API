@@ -46,6 +46,21 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 
 # Endpoints de la API
 
+## Nota Importante
+
+Para acceder a las rutas que requieren autenticación, sigue estos pasos:
+
+1. Inicia sesión con un usuario registrado para obtener un token de autenticación.
+
+2. Utiliza el token generado durante el inicio de sesión para acceder a las rutas que requieren autenticación.
+
+3. Incluye el token en el encabezado de la solicitud de la siguiente manera:
+
+    - **Key (Clave):** `Authorization`
+    - **Value (Valor):** `Bearer tokengeneradoaliniciarseccion`
+
+Este proceso garantiza que solo los usuarios autenticados y autorizados tengan acceso a las funciones protegidas de la aplicación, proporcionando un nivel adicional de seguridad y control en el manejo de datos y recursos.
+
 ## Usuarios
 
 ### Obtener lista de usuarios
@@ -53,6 +68,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Endpoint:** `/api/users`
 - **Método:** `GET`
 - **Descripción:** Retorna la lista de todos los usuarios.
+- **Autenticación:**  No se requiere.
 
 ### Obtener usuario por ID
 
@@ -61,6 +77,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Parámetros:**
   - `user_id`: ID único del usuario
 - **Descripción:** Retorna la información de un usuario específico según su ID.
+- **Autenticación:**  No se requiere.
 
 ### Registrar nuevo usuario
 
@@ -71,6 +88,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
   - `email`: Correo electrónico
   - `password`: Contraseña
 - **Descripción:** Registra un nuevo usuario en el sistema.
+- **Autenticación:**  No se requiere.
 
 ### Registrar nuevo usuario Admin
 
@@ -81,6 +99,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
   - `email`: Correo electrónico
   - `password`: Contraseña
 - **Descripción:** Registra un nuevo usuario con privilegios de administrador en el sistema.
+- **Autenticación:**  No se requiere.
 
 ### Iniciar sesión
 
@@ -90,12 +109,14 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
   - `email`: Correo electrónico
   - `password`: Contraseña
 - **Descripción:** Inicia sesión y retorna un token JWT para autenticación posterior.
+- **Autenticación:**  No se requiere.
 
 ### Cerrar sesión
 
 - **Endpoint:** `/api/logout`
 - **Método:** `GET`
 - **Descripción:** Cierra la sesión actual del usuario autenticado.
+- **Autenticación:**  Se requiere un token JWT.
 
 ## Datos
 
@@ -104,6 +125,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Endpoint:** `/api/datos`
 - **Método:** `GET`
 - **Descripción:** Retorna la lista de datos de predicción.
+- **Autenticación:**  Se requiere un token JWT.
 
 ### Registrar nuevos datos
 
@@ -112,6 +134,7 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Parámetros (en formato JSON):**
   - Varios campos con datos específicos (ver descripción)
 - **Descripción:** Registra nuevos datos en el sistema y actualiza el archivo CSV.
+- **Autenticación:**  Se requiere un token JWT.
 
 ## Modelos
 
@@ -120,9 +143,11 @@ La aplicación Flask se ejecutará localmente y estará disponible en http://loc
 - **Endpoint:** `/api/resultado_arbolesdecicion`
 - **Método:** `GET`
 - **Descripción:** Retorna los resultados del modelo de Árboles de Decisión, incluyendo el reporte de clasificación y la precisión del modelo. También indica si el usuario se inscribirá o no.
+- **Autenticación:**  Se requiere un token JWT.
 
 ### Obtener resultados del modelo de Redes Neuronales
 
 - **Endpoint:** `/api/resultados_redesneuronales`
 - **Método:** `GET`
 - **Descripción:** Retorna los resultados del modelo de Redes Neuronales, incluyendo el reporte de clasificación y la precisión del modelo. También indica si el usuario se inscribirá o no.
+- **Autenticación:**  Se requiere un token JWT.
