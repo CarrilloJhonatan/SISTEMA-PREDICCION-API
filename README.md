@@ -89,6 +89,14 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
   - `password`: Contraseña
 - **Descripción:** Registra un nuevo usuario en el sistema.
 - **Autenticación:**  No se requiere.
+- **Ejemplo:**
+```json
+{
+  "username": "user",
+  "email": "user@example.com",
+  "password": "user_password"
+}
+```
 
 ### Registrar nuevo usuario Admin
 
@@ -100,6 +108,14 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
   - `password`: Contraseña
 - **Descripción:** Registra un nuevo usuario con privilegios de administrador en el sistema.
 - **Autenticación:**  No se requiere.
+- **Ejemplo:**
+```json
+{
+  "username": "admin_user",
+  "email": "admin@example.com",
+  "password": "admin_password"
+}
+```
 
 ### Iniciar sesión
 
@@ -110,6 +126,12 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
   - `password`: Contraseña
 - **Descripción:** Inicia sesión y retorna un token JWT para autenticación posterior.
 - **Autenticación:**  No se requiere.
+- **Ejemplo:**
+```json
+{
+  "email": "user@example.com",
+  "password": "user_password"
+}
 
 ### Cerrar sesión
 
@@ -146,7 +168,7 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
   - `liked`: Indicador de "me gusta".
 - **Descripción:** Registra nuevos datos en el sistema y actualiza el archivo CSV.
 - **Autenticación:** Se requiere un token JWT.
-**Ejemplo:**
+- **Ejemplo:**
 ```json
  {
   "user_id": 123,
