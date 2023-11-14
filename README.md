@@ -132,9 +132,37 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
 - **Endpoint:** `/api/datos`
 - **Método:** `POST`
 - **Parámetros (en formato JSON):**
-  - Varios campos con datos específicos (ver descripción)
+  - `user_id`: ID único del usuario.
+  - `first_open`: Primera apertura de la aplicación.
+  - `dayofweek`: Día de la semana.
+  - `hour`: Hora de registro.
+  - `age`: Edad del usuario.
+  - `screen_list`: Lista de pantallas visualizadas.
+  - `numscreens`: Número de pantallas visualizadas.
+  - `minigame`: Indicador de participación en minijuegos.
+  - `used_premium_feature`: Indicador de uso de funciones premium.
+  - `enrolled`: Indicador de inscripción.
+  - `enrolled_date`: Fecha de inscripción.
+  - `liked`: Indicador de "me gusta".
 - **Descripción:** Registra nuevos datos en el sistema y actualiza el archivo CSV.
-- **Autenticación:**  Se requiere un token JWT.
+- **Autenticación:** Se requiere un token JWT.
+**Ejemplo:**
+```json
+ {
+  "user_id": 123,
+  "first_open": "2013-04-26 18:22:16.013",
+  "dayofweek": "Monday",
+  "hour": 14,
+  "age": 25,
+  "screen_list": "Home, Profile, Settings",
+  "numscreens": 3,
+  "minigame": 1,
+  "used_premium_feature": 0,
+  "enrolled": 1,
+  "enrolled_date": "2013-04-26 18:31:58.923",
+  "liked": true
+}
+```
 
 ## Modelos
 
