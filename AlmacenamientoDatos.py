@@ -204,7 +204,7 @@ def registrar_datos():
     except Exception as e:
         return jsonify({"error": str(e)})
     
-# Ruta para obtener resultados del modelo
+# Ruta para obtener resultados del modelo Arboles decicion
 @app.route('/api/resultado_arbolesdecicion', methods=['GET'])
 @jwt_required()
 def obtener_resultados_arbolesdecicion():
@@ -229,7 +229,7 @@ def obtener_resultados_arbolesdecicion():
     except Exception as e:
         return jsonify({"error": str(e)})
     
-# Ruta para obtener resultados del modelo RedesNeuronales
+# Ruta para obtener resultados del modelo Redes Neuronales
 @app.route('/api/resultados_redesneuronales', methods=['GET'])
 @jwt_required()
 def obtener_resultados_redesneuronales():
