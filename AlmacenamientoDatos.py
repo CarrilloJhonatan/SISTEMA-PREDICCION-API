@@ -6,6 +6,8 @@ from flask import Flask, request, jsonify, session
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_cors import CORS 
 from supabase import create_client
+from ArbolesDecicion import entrenar_y_evaluar_modelo
+from RedesNeuronales import entrenar_y_evaluar_modelo_neuronal
 # Crear una instancia de la aplicación Flask
 app = Flask(__name__)
 CORS(app) # Aplica CORS a la aplicación
@@ -199,6 +201,54 @@ def registrar_datos():
         supabase.table("prediction_data").upsert(nuevo_registro.to_dict(orient='records')).execute()
 
         return jsonify({"mensaje": "Datos registrados con éxito"})
+    except Exception as e:
+        return jsonify({"error": str(e)})
+    
+# Ruta para obtener resultados del modelo
+@app.route('/api/resultado_arbolesdecicion', methods=['GET'])
+def obtener_resultados_arbolesdecicion():
+    try:
+        # Llamar a la función desde tu script que contiene la lógica del modelo
+        reporte_clasificacion, precision_modelo = entrenar_y_evaluar_modelo_neuronal()
+
+        # Formatear los resultados como desees
+        resultados = {
+            "tipo_modelo": "ARBOLES DE DECISION",
+            "reporte_clasificacion": reporte_clasificacion,
+            "precision_modelo": precision_modelo
+        }
+
+        # Determinar si el usuario se inscribirá o no según la precisión del modelo
+        if precision_modelo == 1:
+            resultados["decision_inscripcion"] = "El usuario se inscribirá."
+        else:
+            resultados["decision_inscripcion"] = "El usuario no se inscribirá."
+
+        return jsonify(resultados)
+    except Exception as e:
+        return jsonify({"error": str(e)})
+    
+# Ruta para obtener resultados del modelo RedesNeuronales
+@app.route('/api/resultados_redesneuronales', methods=['GET'])
+def obtener_resultados_redesneuronales():
+    try:
+        # Llamar a la función desde RedesNeuronales.py
+        reporte_clasificacion, precision_modelo = entrenar_y_evaluar_modelo_neuronal()
+
+        # Formatear los resultados como desees
+        resultados = {
+            "tipo_modelo" : "REDES NEURONALES",
+            "reporte_clasificacion": reporte_clasificacion,
+            "precision_modelo": precision_modelo
+        }
+        
+        # Determinar si el usuario se inscribirá o no según la precisión del modelo
+        if precision_modelo == 1:
+            resultados["decision_inscripcion"] = "El usuario se inscribirá."
+        else:
+            resultados["decision_inscripcion"] = "El usuario no se inscribirá."
+
+        return jsonify(resultados)
     except Exception as e:
         return jsonify({"error": str(e)})
 
