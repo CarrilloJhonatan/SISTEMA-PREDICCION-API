@@ -46,7 +46,7 @@ def entrenar_y_evaluar_modelo_arbolesdecicion(dataset_path="Financial_Applicatio
     return classification_rep, accuracy
 
 # # Llamar a la función y obtener los resultados
-# reporte_clasificacion, precision_modelo = entrenar_y_evaluar_modelo()
+# reporte_clasificacion, precision_modelo = entrenar_y_evaluar_modelo_arbolesdecicion()
 
 # # Imprimir los resultados
 # print("Reporte de Clasificación:")
