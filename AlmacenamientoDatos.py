@@ -23,6 +23,11 @@ SUPABASE_URL = "https://pxgrdafxraqxgddiikvl.supabase.co"
 SUPABASE_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4Z3JkYWZ4cmFxeGdkZGlpa3ZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk5MDUyNTIsImV4cCI6MjAxNTQ4MTI1Mn0.dX604vMo1TRi5MvY_j2GAM1My3oV0MmqrSIuOWGG5Pc" 
 supabase = create_client(SUPABASE_URL, SUPABASE_API_KEY)
 
+# Ruta de bienvenida en la URL principal
+@app.route('/')
+def hola_mundo():
+    return jsonify({"mensaje": "¡Hola, mundo!"})
+
 # Ruta para obtener la lista de usuarios
 @app.route('/api/users', methods=['GET'])
 def obtener_usuarios():
