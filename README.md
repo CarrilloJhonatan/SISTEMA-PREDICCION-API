@@ -182,7 +182,7 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
   "used_premium_feature": 0,
   "enrolled": 1,
   "enrolled_date": "2013-04-26 18:31:58.923",
-  "liked": true
+  "liked": 1
 }
 ```
 
