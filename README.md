@@ -61,6 +61,12 @@ Para acceder a las rutas que requieren autenticación, sigue estos pasos:
 
 Este proceso garantiza que solo los usuarios autenticados y autorizados tengan acceso a las funciones protegidas de la aplicación, proporcionando un nivel adicional de seguridad y control en el manejo de datos y recursos.
 
+## PRODUCION
+
+Ya la api se puede acceder a ella mediante un dominio aunque tambien se puede acceder a ella instalandola de manera local con los pasos anteriormente explicados.
+
+- *URL:* https://aerlonieapi.shop/
+
 ## Usuarios
 
 ### Obtener lista de usuarios
