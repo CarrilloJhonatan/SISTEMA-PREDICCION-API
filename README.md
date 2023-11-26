@@ -173,8 +173,8 @@ Este proceso garantiza que solo los usuarios autenticados y autorizados tengan a
  {
   "user_id": 123,
   "first_open": "2013-04-26 18:22:16.013",
-  "dayofweek": "Monday",
-  "hour": 14,
+  "dayofweek": 1,
+  "hour": "08:00:00",
   "age": 25,
   "screen_list": "Home, Profile, Settings",
   "numscreens": 3,
